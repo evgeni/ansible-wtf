@@ -1,0 +1,14 @@
+- hosts: localhost
+  gather_facts: false
+  vars:
+    myitems:
+      - name: foo
+        position: foo
+      - name: bar
+  tasks:
+    - include: level1-inlineblock.yml
+      args:
+        myitem: "{{ item.name }}"
+      when: item.position | default("normal") == "foo"
+      with_items:
+        "{{ myitems }}"

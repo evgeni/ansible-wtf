@@ -1,0 +1,8 @@
+- name: print {{ myitem }}
+  debug:
+    msg: "{{ myitem }}"
+
+- block:
+  - name: this is block
+    debug:
+      msg: my block

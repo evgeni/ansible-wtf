@@ -1,0 +1,4 @@
+- name: print {{ myitem }}
+  debug:
+    msg: "{{ myitem }}"
+- include: blocked.yml
