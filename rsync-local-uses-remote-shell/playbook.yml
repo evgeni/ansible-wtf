@@ -1,0 +1,6 @@
+- hosts: all
+  tasks:
+    - name: copy file
+      synchronize:
+        src: /etc/passwd
+        dest: /tmp/passwd

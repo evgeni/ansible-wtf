@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://atlas.hashicorp.com/search.
+  config.vm.box = "debian/jessie64"
+
+  # disable the synced folder, we don't need it and it will just take time
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  # use the ansible provisioner and force the shell to be dash on the machine
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "playbook.yml"
+    ansible.verbose = "vvv"
+    ansible.host_vars = {
+      "default" => {"ansible_shell_executable" => "/bin/dash"}
+    }
+  end
+end
