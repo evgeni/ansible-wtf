@@ -1,0 +1,28 @@
+- hosts: localhost
+  gather_facts: no
+  vars:
+    a_list:
+      - a_something
+    another_list:
+      - another_something
+  tasks:
+    - set_fact:
+        both_lists: "{{ a_list + another_list }}"
+    - name: show that both_lists is a list
+      debug:
+        msg: "{{ both_lists }}"
+    - name: show that you can add lists to a list, with parentheses
+      debug:
+        msg: "{{ (a_list + another_list) }}"
+    - name: show that you can add lists to a list, WITHOUT parentheses
+      debug:
+        msg: "{{ a_list + another_list }}"
+    - name: join both_lists
+      debug:
+        msg: "{{ both_lists | join(', ') }}"
+    - name: join with parentheses works
+      debug:
+        msg: "{{ (a_list + another_list) | join(', ') }}"
+    - name: join without parentheses fails
+      debug:
+        msg: "{{ a_list + another_list | join(', ') }}"
