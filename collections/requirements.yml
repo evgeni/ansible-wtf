@@ -1,0 +1,4 @@
+collections:
+- name: evgeni.test2
+  version: '*'
+  source: https://galaxy.ansible.com
