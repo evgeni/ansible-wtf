@@ -1,0 +1,4 @@
+---
+- name: fail2
+  fail:
+    msg: two

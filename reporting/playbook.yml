@@ -1,0 +1,5 @@
+---
+- name: fail
+  hosts: localhost
+  roles:
+    - fail

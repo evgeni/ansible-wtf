@@ -1,0 +1,11 @@
+---
+- include_tasks: include_role.yml
+  loop:
+    - fail1
+    - fail2
+    - fail3
+
+- fail:
+    msg: "{{ quadlet_errors }}"
+  when:
+    - quadlet_errors|default([])|length > 0
