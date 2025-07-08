@@ -1,0 +1,14 @@
+---
+- include_role:
+    name: "{{ item }}"
+    apply:
+      ignore_errors: true
+  loop:
+    - fail1
+    - fail2
+    - fail3
+
+- fail:
+    msg: "{{ quadlet_errors }}"
+  when:
+    - quadlet_errors|default([])|length > 0

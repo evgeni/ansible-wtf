@@ -1,0 +1,9 @@
+---
+- name: fail2
+  fail:
+    msg: two
+  register: fail
+
+- set_fact:
+    quadlet_errors: "{{ (quadlet_errors|default([])) + [fail.msg] }}"
+  when: fail is failed
